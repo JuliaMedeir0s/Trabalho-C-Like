@@ -94,10 +94,17 @@ int main()
     while (!fimDoJogo)
     {
         imprimirTabuleiro(tabuleiro, tamanho);
-
-        printf("\nJogador %c, informe a linha e a coluna que deseja jogar: ", jogador);
-        scanf("%d %d", &linha, &coluna);
-        printf("\n");
+        do
+        {
+            printf("\nJogador %c, informe a linha e a coluna que deseja jogar: ", jogador);
+            scanf("%d %d", &linha, &coluna);
+            if (linha < 1 || linha > 3 || coluna < 1 || coluna > 3)
+            {
+                printf("Posição inválida! Tente novamente\n");
+            } else {
+                printf("\n");
+            }
+        } while (linha < 1 || linha > 3 || coluna < 1 || coluna > 3);
 
         // verificar se a linha e a coluna informadas são válidas e conferir se o local escolhido está disponível
         if (linha >= 1 && linha <= 3 && coluna >= 1 && coluna <= 3 && tabuleiro[linha - 1][coluna - 1] == ' ')
